@@ -8,6 +8,8 @@ import { pluck, filter, share, finalize } from 'rxjs/operators';
 
 import { ANGULAR_TOKEN_OPTIONS } from './angular-token.token';
 
+import { Storage } from '@capacitor/core';
+
 import {
   SignInData,
   RegisterData,
@@ -93,7 +95,7 @@ export class AngularTokenService implements CanActivate {
       this.localStorage.getItem = (): void => null;
       this.localStorage.removeItem = (): void => null;
     } else {
-      this.localStorage = localStorage;
+      this.localStorage = Storage;
     }
 
     const defaultOptions: AngularTokenOptions = {
